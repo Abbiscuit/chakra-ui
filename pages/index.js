@@ -1,65 +1,100 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import {
+  Badge,
+  Box,
+  Button,
+  Heading,
+  List,
+  ListIcon,
+  ListItem,
+  Text,
+  useToast,
+} from '@chakra-ui/react';
+import { MdCheckCircle, MdSettings } from 'react-icons/md';
+import Head from 'next/head';
+import { AvatarComponent } from '../components/avatar/avatar';
 
-export default function Home() {
+const HomePage = () => {
+  const toast = useToast();
+
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Home</title>
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+      <Box as="section" p="4" marginX="4" mb="4">
+        <Heading as="h3" size="4xl" mb="2" isTruncated>
+          Chakra UI
+        </Heading>
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
+        <Text fontSize="md" mb="2">
+          ...というUI Frameworkを使ってみての感想。..😘
+        </Text>
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+        <Badge bg="teal.600" color="white" mr="2">
+          UID
+        </Badge>
+        <Badge bg="orange.600" color="white" mr="2">
+          UXD
+        </Badge>
+        <Badge bg="blue.600" color="white" mr="2">
+          React
+        </Badge>
+        <Badge bg="red.600" color="white" mr="2">
+          Web Development
+        </Badge>
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+        {/* <Button size="sm" bg="blue.500" color="white"></Button> */}
+      </Box>
 
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
+      <Box as="section" p="4" mb="4">
+        <Heading as="h3" fontSize="24px" mb="4">
+          What is so special??
+        </Heading>
 
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
+        <List spacing={3} mb="4">
+          <ListItem>
+            <ListIcon as={MdCheckCircle} color="green.500" />
+            UI及びUXデザインの学習経験
+          </ListItem>
+          <ListItem>
+            <ListIcon as={MdCheckCircle} color="green.500" />
+            Material Designの理解及びReactライブラリとの実装経験
+          </ListItem>
+          <ListItem>
+            <ListIcon as={MdCheckCircle} color="green.500" />
+            Firebaseを使ったシンプルなチャットアプリケーション及びそのテスト
+          </ListItem>
+          {/* You can also use custom icons from react-icons */}
+          <ListItem>
+            <ListIcon as={MdSettings} color="green.500" />
+            FigmaやFramerを使ったプロトタイピング及びアニメーション表現
+          </ListItem>
+        </List>
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+        <Button
+          size="sm"
+          variant="outline"
+          colorScheme="teal"
+          onClick={() =>
+            toast({
+              title: 'Reserved successfully.',
+              description: '一度お話ししたいと思った方はぜひご連絡を！！',
+              status: 'success',
+              duration: 4000,
+              isClosable: true,
+            })
+          }
         >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
+          予約する
+        </Button>
+      </Box>
+
+      <Box as="section" marginX="4">
+        <AvatarComponent />
+      </Box>
     </div>
-  )
-}
+  );
+};
+
+export default HomePage;
